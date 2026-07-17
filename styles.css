@@ -245,12 +245,7 @@ a:hover { color: var(--yellow); }
 }
 
 .card-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
   margin-bottom: 12px;
-  flex-wrap: wrap;
 }
 
 .card-title {
@@ -262,17 +257,28 @@ a:hover { color: var(--yellow); }
   word-break: break-word;
 }
 
-.lang {
+/* Tech tag pills */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+
+.tag {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: 999px;
   white-space: nowrap;
 }
-.lang-csharp { color: var(--green);  background: rgba(184, 187, 38, 0.12); }
-.lang-cpp    { color: var(--blue);   background: rgba(131, 165, 152, 0.14); }
-.lang-ts     { color: var(--blue);   background: rgba(131, 165, 152, 0.14); }
+
+.tag-cs  { color: var(--green);  background: rgba(184, 187, 38, 0.12); }
+.tag-ts  { color: var(--blue);   background: rgba(131, 165, 152, 0.14); }
+.tag-py  { color: var(--orange); background: rgba(254, 128,  25, 0.14); }
 
 .card-desc {
   color: var(--fg3);
