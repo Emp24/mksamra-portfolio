@@ -246,10 +246,11 @@ a:hover { color: var(--yellow); }
 
 .card-head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .card-title {
@@ -271,6 +272,7 @@ a:hover { color: var(--yellow); }
 }
 .lang-csharp { color: var(--green);  background: rgba(184, 187, 38, 0.12); }
 .lang-cpp    { color: var(--blue);   background: rgba(131, 165, 152, 0.14); }
+.lang-ts     { color: var(--blue);   background: rgba(131, 165, 152, 0.14); }
 
 .card-desc {
   color: var(--fg3);
