@@ -353,7 +353,42 @@ a:hover { color: var(--yellow); }
   .hero { padding-top: 64px; padding-bottom: 56px; }
 }
 
+/* ===========================================================
+   Typing cursor
+   =========================================================== */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--yellow);
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+.cursor--large {
+  height: 1.05em;
+  vertical-align: baseline;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Fade-in for elements that appear after typing */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
+  .cursor { animation: none; opacity: 0; }
+  .fade-in { animation: none; opacity: 1; }
 }

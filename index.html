@@ -44,15 +44,15 @@
   <main id="main">
     <!-- Hero -->
     <section id="top" class="hero container">
-      <p class="hero-eyebrow"><span class="prompt">$</span> whoami</p>
-      <h1 class="hero-title">Mahmoud Samra</h1>
-      <p class="hero-subtitle">Software Engineer</p>
-      <p class="hero-tagline">
+      <p class="hero-eyebrow"><span class="prompt">$</span> <span data-type>whoami</span></p>
+      <h1 class="hero-title" data-type>Mahmoud Samra</h1>
+      <p class="hero-subtitle" data-type>Software Engineer</p>
+      <p class="hero-tagline" data-type>
         I turn ambiguous requirements into shipped products — across VR, WebGL,
         simulation, game, and web. Strongest where the requirement is fuzzy and the
         path isn't obvious.
       </p>
-      <div class="hero-actions">
+      <div class="hero-actions" style="opacity: 0">
         <a class="btn btn-primary" href="#projects">View projects</a>
         <a class="btn btn-ghost" href="#contact">Get in touch</a>
       </div>
@@ -199,6 +199,45 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function typeHero() {
+      const els = document.querySelectorAll('[data-type]');
+      const actions = document.querySelector('.hero-actions');
+      const speed = 35;          // ms per character
+      const pauseBetween = 400;  // pause between elements
+
+      // Store original text, clear elements, wrap in spans for cursor alignment
+      const items = [];
+      els.forEach(function (el) {
+        var text = el.textContent.trim();
+        // Collapse whitespace for the tagline
+        var collapsed = text.replace(/\s+/g, ' ');
+        el.textContent = '';
+        items.push({ el: el, text: collapsed });
+      });
+
+      function typeItem(index, charIndex) {
+        if (index >= items.length) {
+          // All done — show buttons
+          if (actions) {
+            actions.style.opacity = '1';
+            actions.classList.add('fade-in');
+          }
+          return;
+        }
+
+        var item = items[index];
+        if (charIndex < item.text.length) {
+          item.el.textContent = item.text.slice(0, charIndex + 1);
+          setTimeout(function () { typeItem(index, charIndex + 1); }, speed);
+        } else {
+          // Done this element — move to next after pause
+          setTimeout(function () { typeItem(index + 1, 0); }, pauseBetween);
+        }
+      }
+
+      typeItem(0, 0);
+    })();
   </script>
 </body>
 
